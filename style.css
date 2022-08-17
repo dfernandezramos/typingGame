@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: brown;
+    position: relative;
+    text-align: center;
+    width: 50%;
+    left: 25%;
+    top: 5%;
+}
+
+p {
+    position: relative;
+    text-align: center;
+    width: 50%;
+    left: 25%;
+}
+
+input {
+    width: 50%;
+}
+
+.subtitle {
+    top: 5%;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+.error {
+    background-color: lightcoral;
+    border: red;
+}
+
+.centerBox {
+    position: relative;
+    left: 25%;
+    top: 10%;
+}
