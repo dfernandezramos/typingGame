@@ -40,3 +40,8 @@ input {
     left: 25%;
     top: 10%;
 }
+
+#quote {
+    position: relative;
+    top: 10%;
+}
