@@ -52,11 +52,14 @@ document.getElementById('start').addEventListener('click', () => {
     // Set focus
     typedValueElement.focus();
 
+    // Start listening for key pressed values on the input element
+    typedValueElement.addEventListener('input', keyPressed);
+
     // Start the timer
     startTime = new Date().getTime();
 });
 
-typedValueElement.addEventListener('input', () => {
+function keyPressed () {
     if (wordIndex === words.length){
         return;
     }
@@ -70,6 +73,7 @@ typedValueElement.addEventListener('input', () => {
         const message = `Congratulations! You finished in ${elapsedTime / 1000} seconds.`
         messageElement.innerText = message;
         typedValueElement.disabled = true;
+        typedValueElement.removeEventListener('input', keyPressed)
         wordIndex++;
 
         for (const wordElement of quoteElement.childNodes) {
@@ -89,4 +93,4 @@ typedValueElement.addEventListener('input', () => {
     } else { // the typed word is incorrect
         typedValueElement.className = "error";
     }
-});
+}
