@@ -46,6 +46,9 @@ document.getElementById('start').addEventListener('click', () => {
     // Setup the textbox
     typedValueElement.value = "";
 
+    // enable the input element
+    typedValueElement.disabled = false;
+
     // Set focus
     typedValueElement.focus();
 
@@ -66,6 +69,7 @@ typedValueElement.addEventListener('input', () => {
         const elapsedTime = new Date().getTime() - startTime;
         const message = `Congratulations! You finished in ${elapsedTime / 1000} seconds.`
         messageElement.innerText = message;
+        typedValueElement.disabled = true;
         wordIndex++;
 
         for (const wordElement of quoteElement.childNodes) {
