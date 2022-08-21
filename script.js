@@ -32,7 +32,7 @@ document.getElementById('start').addEventListener('click', () => {
     wordIndex = 0;
 
     // Create an array of span elements so we can set a class
-    const spanWords = words.map(function(word) { return `<span>${word}</span><span> </span>`});
+    const spanWords = words.map(function(word) { return `<span>${word} </span>`});
 
     // Convert into string and set as innerHTML on quote display
     quoteElement.innerHTML = spanWords.join('');
@@ -51,4 +51,38 @@ document.getElementById('start').addEventListener('click', () => {
 
     // Start the timer
     startTime = new Date().getTime();
+});
+
+typedValueElement.addEventListener('input', () => {
+    if (wordIndex === words.length){
+        return;
+    }
+
+    // Get the current word and the typed value
+    const currentWord = words[wordIndex];
+    const typedValue = typedValueElement.value;
+
+    if (typedValue === currentWord &&  wordIndex === words.length - 1) { // the typed word is correct and there are no more words to type
+        const elapsedTime = new Date().getTime() - startTime;
+        const message = `Congratulations! You finished in ${elapsedTime / 1000} seconds.`
+        messageElement.innerText = message;
+        wordIndex++;
+
+        for (const wordElement of quoteElement.childNodes) {
+            wordElement.className = "correct";
+        }
+    } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) { // the typed word is correct
+        typedValueElement.value = "";
+        quoteElement.childNodes[wordIndex++].className = "";
+
+        if (wordIndex === words.length){
+            return;
+        }
+
+        quoteElement.childNodes[wordIndex].className = "highlight";
+    } else if (currentWord.startsWith(typedValue)) { // the typed word is inclomplete, but correct
+        typedValueElement.className = "";
+    } else { // the typed word is incorrect
+        typedValueElement.className = "error";
+    }
 });

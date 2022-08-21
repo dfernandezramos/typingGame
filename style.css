@@ -35,6 +35,11 @@ input {
     border: red;
 }
 
+.correct {
+    background-color: green;
+    color: white;
+}
+
 .centerBox {
     position: relative;
     left: 25%;
