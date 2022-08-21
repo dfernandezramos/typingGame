@@ -79,6 +79,8 @@ function keyPressed () {
         for (const wordElement of quoteElement.childNodes) {
             wordElement.className = "correct";
         }
+
+        alert("You win!")
     } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) { // the typed word is correct
         typedValueElement.value = "";
         quoteElement.childNodes[wordIndex++].className = "";
