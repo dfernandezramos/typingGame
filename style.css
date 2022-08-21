@@ -19,6 +19,7 @@ p {
 }
 
 input {
+    position: relative;
     width: 50%;
 }
 
@@ -43,10 +44,18 @@ input {
 .centerBox {
     position: relative;
     left: 25%;
-    top: 10%;
+    top: 5%;
 }
 
 #quote {
     position: relative;
-    top: 10%;
+    top: 5%;
+}
+
+#message {
+    font-size: larger;
+    font-weight: bold;
+    font-style: italic;
+    color: Green;
+    top: 5%;
 }
