@@ -80,7 +80,16 @@ function keyPressed () {
             wordElement.className = "correct";
         }
 
-        alert("You win!")
+        const highscore = localStorage.getItem ('highscore');
+
+        if (highscore === null || elapsedTime < highscore) {
+            localStorage.setItem('highscore', elapsedTime)
+            var highscorerName = prompt(`You made the highest score! ${elapsedTime / 1000}`, "Enter your name here");
+            localStorage.setItem('highscorerName', highscorerName)
+        } else {
+            const highscorerName = localStorage.getItem ('highscorerName');
+            alert(`You completed the quote in ${elapsedTime} seconds! Highest score: ${highscore / 1000} by ${highscorerName}`);
+        }
     } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) { // the typed word is correct
         typedValueElement.value = "";
         quoteElement.childNodes[wordIndex++].className = "";
